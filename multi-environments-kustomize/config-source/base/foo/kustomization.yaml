@@ -15,6 +15,8 @@
 # [START anthosconfig_multi_environments_kustomize_config_source_base_foo_kustomization] 
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+bases:
+- cis-k8s-v1.5.1/
 resources:
 - namespace.yaml
 - serviceaccount.yaml
