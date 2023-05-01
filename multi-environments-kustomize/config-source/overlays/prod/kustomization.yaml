@@ -36,11 +36,11 @@ patches:
       value: deploy-bot@foo-corp.com
 # Enforce the cis-k8s-v1.5.1 Kpt package
 - target:
-    kind: Kptfile
-    name: cis-k8s-v1.5.1
+    kind: K8sProhibitRoleWildcardAccess
+    name: cis-k8s-v1.5.1-prohibit-role-wildcard-access
   patch: |-
     - op: replace
-      path: /pipeline/mutators/0/configMap/enforcementAction
+      path: /spec/enforcementAction
       value: deny
 commonLabels:
   environment: prod
