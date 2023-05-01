@@ -17,7 +17,7 @@ kind: NamingPolicyNamespace
 metadata:
   name: namingpolicynamespace
 spec:
-  enforcementAction: dryrun
+  enforcementAction: warn
   match:
     kinds:
       - apiGroups:
@@ -27,7 +27,6 @@ spec:
     excludedNamespaces:
     - config-management-monitoring
     - config-management-system
-    - foo
     - default
     - gatekeeper-system
     - gke-connect
