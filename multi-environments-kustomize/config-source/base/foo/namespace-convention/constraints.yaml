@@ -17,7 +17,7 @@ kind: NamingPolicyNamespace
 metadata:
   name: namingpolicynamespace
 spec:
-  enforcementAction: warn
+  enforcementAction: dryrun
   match:
     kinds:
       - apiGroups:
