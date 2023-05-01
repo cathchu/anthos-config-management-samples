@@ -34,6 +34,14 @@ patches:
     - op: replace
       path: /subjects/0/name
       value: deploy-bot@foo-corp.com
+# Enforce the cis-k8s-v1.5.1 Kpt package
+- target:
+    kind: Kptfile
+    name: cis-k8s-v1.5.1
+  patch: |-
+    - op: replace
+      path: /pipeline/mutators/0/configMap/enforcementAction
+      value: deny
 commonLabels:
   environment: prod
 # [END anthosconfig_multi_environments_kustomize_config_source_overlays_prod_kustomization] 
