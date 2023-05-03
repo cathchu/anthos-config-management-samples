@@ -20,6 +20,5 @@ bases:
 - namespace-convention/
 resources:
 - invalid-namespace.yaml
-- valid-namespace.yaml
 - serviceaccount.yaml
 # [END anthosconfig_multi_environments_kustomize_config_source_base_foo_kustomization] 

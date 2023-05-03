@@ -31,7 +31,8 @@ metadata:
         description: 'Restricts the use of wildcards in `Roles` and `ClusterRoles`.',
         remediation: 'The use of the wildcard character  in `Roles` and `ClusterRoles` is restricted. Remove all wildcards from your `Roles` and `ClusterRoles`. See “RoleBinding and ClusterRoleBinding” for more information: https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding',
         minimumTemplateLibraryVersion: '1.12.0'
-      }"
+      }",
+    configmanagement.gke.io/cluster-selector: selector-env-prod
 spec:
   enforcementAction: deny
   match:
