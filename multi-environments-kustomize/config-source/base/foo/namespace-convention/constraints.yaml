@@ -16,6 +16,8 @@ apiVersion: constraints.gatekeeper.sh/v1beta1
 kind: NamingPolicyNamespace
 metadata:
   name: namingpolicynamespace
+  annotations:
+    policycontroller: constraint
 spec:
   enforcementAction: dryrun
   match:
@@ -35,6 +37,6 @@ spec:
     - kube-system
     - resource-group-system
   parameters:
-    team_code: ^(aa|bb|cc)
-    env_code: ^(qa|dev|prod) 
+    team_code: ^(aa|bb|cc)-
+    env_code: -(qa|dev|prod)-
     user_defined_string: '^[a-z][a-z0-9-]*[a-z0-9]$'

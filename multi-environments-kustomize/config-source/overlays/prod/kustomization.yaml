@@ -34,12 +34,19 @@ patches:
     - op: replace
       path: /subjects/0/name
       value: deploy-bot@foo-corp.com
-# Enforce the cis-k8s-v1.5.1 Kpt package
-# You can also use regex to apply this patch to all policies. 
+# Enforce the cis-k8s-v1.5.1-prohibit-role-wildcard-access 
+# You can also use regex to apply this patch to multiple resources 
 # Ref: https://kubectl.docs.kubernetes.io/references/kustomize/kustomization/patches/
+# - target:
+#     kind: K8sProhibitRoleWildcardAccess
+#     name: cis-k8s-v1.5.1-prohibit-role-wildcard-access
+#   patch: |-
+#     - op: replace
+#       path: /spec/enforcementAction
+#       value: deny
+# Enforce all policies with a specific annotation
 - target:
-    kind: K8sProhibitRoleWildcardAccess
-    name: cis-k8s-v1.5.1-prohibit-role-wildcard-access
+    annotationSelector: "policycontroller=constraint"
   patch: |-
     - op: replace
       path: /spec/enforcementAction
