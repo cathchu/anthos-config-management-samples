@@ -1,0 +1,70 @@
+# Copyright 2023 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#########
+apiVersion: templates.gatekeeper.sh/v1
+kind: ConstraintTemplate
+metadata:
+  name: namingpolicynamespace
+  annotations:
+    description: Namespace Naming Enforcement Policy
+spec:
+  crd:
+    spec:
+      names:
+        kind: NamingPolicyNamespace
+      validation:
+        openAPIV3Schema:
+          type: object
+          properties:
+            team_code:
+              description: team code REGEX Naming convention.
+              type: string
+            env_code:
+              description: Environment code REGEX Naming convention.
+              type: string
+            user_defined_string:
+              description: User Defined String REGEX Naming convention.
+              type: string
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |-
+        package k8srestrictnamespacenames
+        # Namespace must start with the team the namespace is part of, the environment (dev, qa, or prod)
+        # and a user defined string describing the purpose of the namespace
+        # example: consulting-dev-splunk
+        #
+        # team code validation (team_code)
+        violation[{"msg": message}] {
+          asset := input.review.object
+          asset.kind == "Namespace"
+          team_code = input.parameters.team_code
+          not re_match(team_code, asset.metadata.name)
+          message := sprintf("Namespace '%s' does not match meet naming requirements: The team code is incorrect.", [asset.metadata.name])
+        }
+        # Environment code validation (env_code)
+        violation[{"msg": message}] {
+          asset := input.review.object
+          asset.kind == "Namespace"
+          env_code = input.parameters.env_code
+          not re_match(env_code, asset.metadata.name)
+          message := sprintf("Namespace '%s' does not match meet naming requirements: The env code is incorrect. It must be (qa, dev or prod).", [asset.metadata.name])
+        }
+        # User defined string validation (user_defined_string)
+        violation[{"msg": message}] {
+          asset := input.review.object
+          asset.kind == "Namespace"
+          user_defined_string = input.parameters.user_defined_string
+          not re_match(user_defined_string, asset.metadata.name)
+          message := sprintf("Namespace '%s' does not match meet naming requirements: The user defined string can only contain lowercase letters, numbers, and hyphens.", [asset.metadata.name])
+        }
