@@ -31,7 +31,8 @@ metadata:
         description: 'Requires that Pods define `securityContext`.',
         remediation: 'Containers cannot run without a `securityContext` defined. Set your containers `securityContext: `. See “Set the security context for a Pod” for more information: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod',
         minimumTemplateLibraryVersion: '1.14.3'
-      }"
+      }",
+    configmanagement.gke.io/cluster-selector: selector-env-prod
 spec:
   enforcementAction: deny
   match:

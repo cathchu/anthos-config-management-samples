@@ -31,7 +31,8 @@ metadata:
         description: 'Restricts containers with `securityContext.privileged` set to `true`.',
         remediation: 'Containers cannot run with `securityContext.privileged` set to `true`. Remove `securityContext.privileged: true` from your containers. See “Configure a Security Context for a Pod or Container” for more information: https://kubernetes.io/docs/tasks/configure-pod-container/security-context',
         minimumTemplateLibraryVersion: '1.11.1'
-      }"
+      }",
+    configmanagement.gke.io/cluster-selector: selector-env-prod
 spec:
   enforcementAction: deny
   match:

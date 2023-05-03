@@ -31,7 +31,8 @@ metadata:
         description: 'Requires that Pods have seccomp profile set to runtime/default or docker/default.',
         remediation: 'Containers can't run with `seccomp` other than `runtime/default` or `docker/default`. Remove or set your containers `seccomp` annotation to `runtime/default`. See “Set the Seccomp Profile for a Container” for more information: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-seccomp-profile-for-a-container',
         minimumTemplateLibraryVersion: '1.11.1'
-      }"
+      }",
+    configmanagement.gke.io/cluster-selector: selector-env-prod
 spec:
   enforcementAction: deny
   match:

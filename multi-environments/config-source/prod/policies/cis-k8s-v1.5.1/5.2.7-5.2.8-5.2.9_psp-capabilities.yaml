@@ -31,7 +31,8 @@ metadata:
         description: 'Requires the use of `NET_RAW` in containers; `allowedCapabilities` must be set to an empty array.',
         remediation: 'Containers cannot run with the `NET_RAW` capability.  Set your containers with `allowedCapabilities: []`. See “Set capabilities for a Container” for more information: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-capabilities-for-a-container',
         minimumTemplateLibraryVersion: '1.10.2'
-      }"
+      }",
+    configmanagement.gke.io/cluster-selector: selector-env-prod
 spec:
   enforcementAction: deny
   match:

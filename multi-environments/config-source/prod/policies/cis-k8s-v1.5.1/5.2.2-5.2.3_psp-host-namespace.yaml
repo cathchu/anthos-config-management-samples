@@ -31,7 +31,8 @@ metadata:
         description: 'Restricts containers with `hostPID` or `hostIPC` set to `true`.',
         remediation: 'Containers cannot run with `hostPID` or `hostIPC` set to `true`. Set your containers with `hostPID: false` and/or `hostIPC: false`.',
         minimumTemplateLibraryVersion: '1.11.1'
-      }"
+      }",
+    configmanagement.gke.io/cluster-selector: selector-env-prod
 spec:
   enforcementAction: deny
   match:

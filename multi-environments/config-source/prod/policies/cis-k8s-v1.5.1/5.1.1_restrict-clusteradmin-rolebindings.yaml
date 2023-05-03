@@ -31,7 +31,8 @@ metadata:
         description: 'Restricts the use of the `cluster-admin` role.',
         remediation: 'The use of the cluster-admin `ClusterRole` for Role-based access control (RBAC) is restricted. Use a different role. See “Using RBAC Authorization” for more information: https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles',
         minimumTemplateLibraryVersion: '1.10.1'
-      }"
+      }",
+    configmanagement.gke.io/cluster-selector: selector-env-prod
 spec:
   enforcementAction: deny
   parameters:

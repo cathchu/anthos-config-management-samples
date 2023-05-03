@@ -31,7 +31,8 @@ metadata:
         description: 'Restricts containers from running as the root user.',
         remediation: 'Containers cannot run with `runAsUser` set to `root`. Set your containers with `runAsUser: ` to a non-root user ID. See “Set the security context for a Pod” for more information: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod',
         minimumTemplateLibraryVersion: '1.11.1'
-      }"
+      }",
+    configmanagement.gke.io/cluster-selector: selector-env-prod
 spec:
   enforcementAction: deny
   match:

@@ -16,6 +16,7 @@ apiVersion: constraints.gatekeeper.sh/v1beta1
 kind: NamingPolicyNamespace
 metadata:
   name: namingpolicynamespace
+  configmanagement.gke.io/cluster-selector: selector-env-prod
 spec:
   enforcementAction: deny
   match:

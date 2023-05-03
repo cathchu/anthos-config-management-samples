@@ -31,7 +31,8 @@ metadata:
         description: 'Restricts containers with `allowPrivilegeEscalation` set to `true`.',
         remediation: 'Containers cannot run with `allowPrivilegeEscalation` set to `true`. Set your containers with `allowPrivilegeEscalation: false`.',
         minimumTemplateLibraryVersion: '1.11.1'
-      }"
+      }",
+    configmanagement.gke.io/cluster-selector: selector-env-prod
 spec:
   enforcementAction: deny
   match:
