@@ -17,7 +17,6 @@ spec:
     excludedNamespaces:
     - config-management-monitoring
     - config-management-system
-    - default
     - gatekeeper-system
     - gke-connect
     - istio-system
@@ -27,7 +26,7 @@ spec:
     - resource-group-system
   parameters:
     labels:
-      - allowedRegex: ^[a-zA-Z]+.agilebank.demo$
+      - allowedRegex: ^[a-z][a-z0-9-]*[a-z0-9]$
         key: billing_code
       - allowedRegex: ^[a-z][a-z0-9-]*[a-z0-9]$
         key: appid
