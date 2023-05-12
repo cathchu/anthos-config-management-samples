@@ -21,4 +21,6 @@ bases:
 resources:
 - invalid-namespace.yaml
 - serviceaccount.yaml
+- deployment.yaml
+- constraint.yaml
 # [END anthosconfig_multi_environments_kustomize_config_source_base_foo_kustomization] 

@@ -1,0 +1,36 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sRequiredLabels
+metadata:
+  name: deploymentlabels
+spec:
+  # match <object>: lets you configure which resources are in scope for this
+  # constraint. For more information, see the Constraint match section of the
+  # Anthos Config Management documentation:
+  # https://cloud.google.com/anthos-config-management/docs/reference/match
+  enforcementAction: warn
+  match:
+    kinds:
+      - apiGroups:
+          - '*'
+        kinds:
+          - Pod
+    excludedNamespaces:
+    - config-management-monitoring
+    - config-management-system
+    - default
+    - gatekeeper-system
+    - gke-connect
+    - istio-system
+    - kube-node-lease
+    - kube-public
+    - kube-system
+    - resource-group-system
+  parameters:
+    labels:
+      - allowedRegex: ^[a-zA-Z]+.agilebank.demo$
+        key: billing_code
+      - allowedRegex: ^[a-z][a-z0-9-]*[a-z0-9]$
+        key: appid
+      - allowedRegex: ^[a-z][a-z0-9-]*[a-z0-9]$
+        key: env
+    message: All deployments must be labeled with billing_code, appid, and env.
