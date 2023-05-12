@@ -12,6 +12,7 @@ spec:
         app: emailservice
         appid: "abc1234"
         env: "test"
+        billing_code: "test-account-1234"
     spec:
       serviceAccountName: default
       terminationGracePeriodSeconds: 5
