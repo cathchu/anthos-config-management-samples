@@ -11,6 +11,7 @@ spec:
     metadata:
       labels:
         app: emailservice
+        appid: "abc1234"
         env: "test"
         billing_code: "test-account-1234"
     spec:
